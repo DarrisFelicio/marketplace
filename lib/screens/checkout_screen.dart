@@ -6,6 +6,10 @@ class CheckoutScreen extends StatelessWidget {
   const CheckoutScreen({super.key});
 
   void _showOrderConfirmation(BuildContext context) {
+    final cart = Provider.of<CartProvider>(
+      context,
+      listen: false,
+    ); // Get CartProvider
     showDialog(
       context: context,
       builder:
@@ -17,6 +21,7 @@ class CheckoutScreen extends StatelessWidget {
                 onPressed: () {
                   Navigator.of(ctx).pop();
                   Navigator.of(context).popUntil((route) => route.isFirst);
+                  cart.clearCart(); // Clear the cart
                 },
                 child: const Text('OK'),
               ),

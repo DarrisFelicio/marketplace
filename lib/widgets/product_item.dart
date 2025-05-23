@@ -5,7 +5,7 @@ import '../providers/cart_provider.dart';
 
 class ProductItem extends StatelessWidget {
   final Product product;
-  const ProductItem({required this.product});
+  const ProductItem({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class ProductItem extends StatelessWidget {
           Provider.of<CartProvider>(
             context,
             listen: false,
-          ).addItem(product.id, product.title, product.price);
+          ).addItem(product.id, product.price, product.title);
         },
       ),
     );
